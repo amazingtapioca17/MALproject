@@ -57,8 +57,8 @@ def comp_print():
             print('broke')
             print(mal_id_list)
             break
-def splicer(td):
+def splicer(td,grouplist):
     #this doesn't work yet
-    return sorted([key,td[key] for key in td],key=lamdba t: abs(t[1]-len(td)/2))
+    return sorted([(key,td[key]) for key in td],key=lambda t: abs(len(grouplist)/2-t[1]))[0][0]
     
     

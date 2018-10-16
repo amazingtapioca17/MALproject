@@ -25,4 +25,5 @@ with open('obj.json', 'w') as outfile:
 jf.comp_print()
 jf.list_extract(jf.mal_id_list)
 print(jf.trait_dict)
-print(jf.splicer(jf.trait_dict,jf.mal_id_list))
+print(cat.gd[jf.splicer(jf.trait_dict,jf.mal_id_list)])
+print(jf.anime_trait_dict)

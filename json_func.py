@@ -4,6 +4,7 @@ import category as cat
 from collections import defaultdict
 mal_id_list=[]
 trait_dict=defaultdict(int)
+anime_trait_dict=dict()
 def extract(url):
     #extracts the json data into something useable, returns json file
     response=urllib.request.urlopen(url)
@@ -13,7 +14,10 @@ def extract(url):
     return(json.loads(text))
 def anime_extract(obj):
     trait_dict[obj['type']]+=1
+    anime_trait_dict[obj['mal_id']]=[]
+    anime_trait_dict[obj['mal_id']].append(obj['type'])
     for genre in obj['genres']:
+        anime_trait_dict[obj['mal_id']].append(genre['mal_id'])
         trait_dict[genre['mal_id']]+=1
 def list_extract(mlist:'list of ids'):
     for anime in mlist:
@@ -58,7 +62,8 @@ def comp_print():
             print(mal_id_list)
             break
 def splicer(td,grouplist):
-    #this doesn't work yet
     return sorted([(key,td[key]) for key in td],key=lambda t: abs(len(grouplist)/2-t[1]))[0][0]
+def narrow_choices(mal_id_list):
+    pass
     
     

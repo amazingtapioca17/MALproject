@@ -1,6 +1,6 @@
 import json
 import urllib.request
-NUM=0
+NUM=14781
 failed_list=[]
 url='https://api.jikan.moe/v3/anime/'
 def extract(url,num):

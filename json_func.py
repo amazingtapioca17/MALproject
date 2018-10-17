@@ -20,8 +20,9 @@ def anime_extract(obj):
         anime_trait_dict[obj['mal_id']].append(genre['mal_id'])
         trait_dict[genre['mal_id']]+=1
 def list_extract(mlist:'list of ids'):
-    for anime in mlist:
-        anime_extract(extract(urlcon2(anime)))
+    for anime_num in range(len(mlist)):
+        print(f'{anime_num*100/len(mlist):.2f}% done')
+        anime_extract(extract(urlcon2(mlist[anime_num])))
 def searchprint(obj):
     #prints the results of the whole search
     global mal_id_list
@@ -43,7 +44,6 @@ def urlcon(score:float,*genre:str):
 def urlcon2(mal_id):
     #constructs a url for a single anime
     url='https://api.jikan.moe/v3/anime/'+str(mal_id)
-    print(url)
     return url
 def comp_print():
     #prints everything out together, currently uses two genres and a score

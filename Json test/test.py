@@ -1,6 +1,6 @@
 import json
 import urllib.request
-NUM=14781
+NUM=0
 failed_list=[]
 url='https://api.jikan.moe/v3/anime/'
 def extract(url,num):
@@ -13,7 +13,7 @@ def extract(url,num):
 def json_dump(mal_id,data):
     with open(f'{mal_id}.json', 'w') as outfile:
         json.dump(data, outfile)
-while True:
+while False:
     NUM+=1
     try:
         json_dump(NUM,extract(url,NUM))
@@ -25,6 +25,8 @@ while True:
         failed_list.append(NUM)
         if NUM>40000:
             break
+with open('107.json') as json_file:
+    json_data=json.load(json_file)
         
     
     
